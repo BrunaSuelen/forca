@@ -40,4 +40,7 @@ export class StrengthComponent implements OnInit {
     }
   }
 
+  teste() {
+    this.tips -= 1;
+  }
 }

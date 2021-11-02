@@ -9,7 +9,12 @@
         [tips]="tips"
         [point]="point"
       ></app-resume>
-      <app-tips></app-tips>
+      <app-tips
+        [tips]="tips"
+        [tipsList]="word?.tips"
+        (chancesTrigger)="chances = chances - 1"
+        (tipsTrigger)="teste()"
+      ></app-tips>
     </div>
   </div>
 </body>

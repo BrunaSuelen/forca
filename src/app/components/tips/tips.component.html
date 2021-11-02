@@ -3,14 +3,15 @@
   <mat-card-subtitle
     >Você perderá uma chance caso solicite uma dica.</mat-card-subtitle
   >
-  <div class="tip">
-    <p>
-      <b>1.</b>
-      jndsjcisjcijfdivjfiuvjuvjgjkxsdjijo
-    </p>
-  </div>
+  <ul class="tip">
+    <li *ngFor="let tip of tipsList?.slice(0, 3 - this.tips)">
+      {{ tip }}
+    </li>
+  </ul>
   <mat-divider inset></mat-divider>
   <mat-card-actions>
-    <button mat-button class="pressed valid">Preciso de ajuda</button>
+    <button mat-button [disabled]="!tips" (click)="showMoreTip()">
+      Preciso de ajuda
+    </button>
   </mat-card-actions>
 </mat-card>
