@@ -8,14 +8,17 @@ import { WordService } from 'src/app/service/word-service.service';
   templateUrl: './strength.component.html',
   styleUrls: ['./strength.component.scss']
 })
+
 export class StrengthComponent implements OnInit {
   public word?: Word;
   public words!: Array<Word>;
+  public uncoveredWordsId: Array<number> = [];
   public victory!: boolean;
   public activeGame: boolean = true;
   public chances: number = 5;
   public tips: number = 3;
   public point: number = 0;
+  public limit: number = 10;
 
   public refreshInput: Subject<void> = new Subject();
 
@@ -37,11 +40,20 @@ export class StrengthComponent implements OnInit {
   }
 
   public async getWork(): Promise<any> {
+    if (this.limit === this.uncoveredWordsId.length) {
+      return this.gameOverTrigger(true);
+    }
+
+    let wordId: number;
     await this.findAll();
 
     if (this.words) {
-      const WORD_ID = this.wordService.getRandomId(1, this.words.length);
-      this.word = this.words.find((word: Word) => word.id == WORD_ID);
+      do {
+        wordId = this.wordService.getRandomId(1, this.words.length);
+      } while (this.uncoveredWordsId.includes(wordId));
+
+      this.uncoveredWordsId.push(wordId);
+      this.word = this.words.find((word: Word) => word.id == wordId);
     }
   }
 
