@@ -1,4 +1,4 @@
-<div *ngIf="activeGame">
+<div class="strength" *ngIf="activeGame; else gameOver">
   <app-chances [chances]="chances"></app-chances>
   <div class="container">
     <app-card-strength
@@ -25,3 +25,15 @@
     </div>
   </div>
 </div>
+
+<ng-template #gameOver>
+  <app-game-over
+    [title]="victory ? 'Vitória' : 'Derrota'"
+    [subtitle]="
+      victory
+        ? 'Parabens!! Você consegui zerar o jogo'
+        : 'Infelizmente não foi desta vez :('
+    "
+    (newGame)="newWork()"
+  ></app-game-over>
+</ng-template>

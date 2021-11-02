@@ -1,3 +1,30 @@
 .container {
   width: 25vw;
 }
+
+.mat-card-actions button.mat-button {
+  background: #64c75d;
+  color: white;
+  margin: 8px;
+  width: calc(100% - 16px);
+
+  &.mat-button-disabled.mat-button-disabled {
+    background: #bdbdbd;
+  }
+}
+
+ul {
+  padding-left: 15px;
+
+  li {
+    list-style: decimal;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+
+    &::marker {
+      font-weight: 600;
+      color: #325742;
+    }
+  }
+}

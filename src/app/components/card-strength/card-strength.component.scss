@@ -10,13 +10,15 @@ mat-card-actions {
 
   button {
     cursor: pointer;
-    padding: 8px;
+    padding: 0 8px;
     border: none;
     font-size: large;
     font-weight: 500;
     border-radius: 5px;
     color: #3b4c42;
     background: transparent;
+    min-width: fit-content;
+    margin: 0;
 
     &.pressed,
     &:hover {
@@ -29,7 +31,12 @@ mat-card-actions {
     }
 
     &.valid {
-      color: #90ac8e;
+      color: #44d43a;
+    }
+
+    .mat-button-ripple.mat-ripple,
+    .mat-button-focus-overlay {
+      width: auto;
     }
   }
 }

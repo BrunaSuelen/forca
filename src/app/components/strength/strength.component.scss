@@ -1,7 +1,5 @@
-body {
-  width: 100%;
-  display: flex;
-  justify-content: end;
+.strength {
+  margin-right: 40px;
 }
 
 .container {
@@ -12,10 +10,9 @@ body {
   height: 100%;
   display: flex;
   justify-content: end;
-  margin-right: 40px;
-  max-width: 800px;
+
+  overflow: hidden;
   grid-gap: 10px;
-  gap: 10px;
 
   > div {
     display: flex;
@@ -24,4 +21,8 @@ body {
     height: fit-content;
     max-width: min-content;
   }
+}
+
+.info > * {
+  margin-right: 10px;
 }

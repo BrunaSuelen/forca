@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Letter } from 'src/app/model/letter.model';
 import { Word } from 'src/app/model/word.model';
 import { ALPHABET } from 'src/assets/data/alphabet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-card-strength',
@@ -22,7 +23,7 @@ export class CardStrengthComponent implements OnChanges, OnInit {
   letters!: Array<string>;
   alphabet: Array<Letter> = [...ALPHABET];
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.refreshInputSubscribe();
@@ -83,13 +84,20 @@ export class CardStrengthComponent implements OnChanges, OnInit {
       const WORD = this.word?.title.toLocaleUpperCase();
 
       if (WORD == WORD_INPUT) {
-        this.gameOverTrigger.emit(true);
-        this.pointTrigger.emit();
+        this.openSnackBar('Muito bem! Está pronto para a próxima palavra?', 'Sim');
+        setTimeout(() => {
+          this.gameOverTrigger.emit(true);
+          this.pointTrigger.emit();
+        }, 800);
       }
       return;
     }
 
     if (!this.chances) this.gameOverTrigger.emit(false);
     this.chanceTrigger.emit();
+  }
+
+  public openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action);
   }
 }

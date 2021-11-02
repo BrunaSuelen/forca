@@ -18,7 +18,7 @@ export class StrengthComponent implements OnInit {
   public chances: number = 5;
   public tips: number = 3;
   public point: number = 0;
-  public limit: number = 10;
+  public limit!: number;
 
   public refreshInput: Subject<void> = new Subject();
 
@@ -34,9 +34,10 @@ export class StrengthComponent implements OnInit {
     return this.wordService
       .findAll()
       .toPromise()
-      .then(
-        (works: Array<Word>) => this.words = works
-      )
+      .then((words: Array<Word>) => {
+        this.limit = words.length;
+        return this.words = words;
+      });
   }
 
   public async getWork(): Promise<any> {
@@ -70,7 +71,7 @@ export class StrengthComponent implements OnInit {
 
   public async newWork(): Promise<any> {
     await this.getWork();
-    this.chances = 5;
+    this.activeGame = true;
     this.tips = 3;
     this.refreshInput.next();
   }
