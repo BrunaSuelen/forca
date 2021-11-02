@@ -1,0 +1,27 @@
+body {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.container {
+  margin-top: 50px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
+  max-width: 800px;
+  grid-gap: 10px;
+  gap: 10px;
+
+  > div {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    height: fit-content;
+    max-width: min-content;
+  }
+}
