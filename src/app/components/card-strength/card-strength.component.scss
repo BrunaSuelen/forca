@@ -40,3 +40,19 @@ mat-card-actions {
     }
   }
 }
+
+@media (max-width: 900px) {
+  mat-card-actions {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 740px) {
+  mat-card {
+    width: calc(100% - 40px);
+    margin: 20px;
+  }
+}
