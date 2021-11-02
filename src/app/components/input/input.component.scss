@@ -1,0 +1,10 @@
+mat-form-field.mat-form-field {
+  width: 100%;
+  text-align: center;
+
+  .mat-input-element:disabled {
+    color: #3b4c42;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
+}
