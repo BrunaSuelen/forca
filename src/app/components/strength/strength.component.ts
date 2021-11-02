@@ -11,6 +11,8 @@ export class StrengthComponent implements OnInit {
   public word?: Word;
   public words!: Array<Word>;
   public chances: number = 5;
+  public tips: number = 3;
+  public point: number = 0;
 
   constructor(
     private wordService: WordService

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-chances',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chances.component.scss']
 })
 export class ChancesComponent implements OnInit {
+  @Input() chances!: number;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public getImage(): string {
+    const URL = 'assets/images/chances/';
+    const IMAGE = this.chances == undefined || this.chances < 0 ? 'default' : this.chances;
+    return `${URL}${IMAGE}.png`;
+  }
 }

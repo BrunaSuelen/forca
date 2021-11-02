@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Letter } from 'src/app/model/letter.model';
 import { Word } from 'src/app/model/word.model';
 import { ALPHABET } from 'src/assets/data/alphabet';
@@ -11,6 +11,7 @@ import { ALPHABET } from 'src/assets/data/alphabet';
 export class CardStrengthComponent implements OnInit, OnChanges {
 
   @Input() word?: Word;
+  @Output() chanceTrigger: EventEmitter<void> = new EventEmitter<void>();
 
   letters!: Array<string>;
   alphabet: Array<Letter> = ALPHABET;
@@ -60,6 +61,11 @@ export class CardStrengthComponent implements OnInit, OnChanges {
 
   public validateLetter(letter: Letter) {
     letter.select = true;
-    this.updateWordInput();
+    if (letter.valid) {
+      this.updateWordInput();
+      return;
+    }
+
+    this.chanceTrigger.emit();
   }
 }

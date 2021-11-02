@@ -1,9 +1,14 @@
 <body>
-  <app-chances></app-chances>
+  <app-chances [chances]="chances"></app-chances>
   <div class="container">
-    <app-card-strength [word]="word"></app-card-strength>
+    <app-card-strength [word]="word" (chanceTrigger)="chances = chances - 1">
+    </app-card-strength>
     <div class="info">
-      <app-resume></app-resume>
+      <app-resume
+        [chances]="chances"
+        [tips]="tips"
+        [point]="point"
+      ></app-resume>
       <app-tips></app-tips>
     </div>
   </div>
