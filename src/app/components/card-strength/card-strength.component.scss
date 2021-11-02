@@ -1,0 +1,35 @@
+mat-card {
+  width: 40vw;
+}
+
+mat-card-actions {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  margin: 0 10px;
+
+  button {
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    font-size: large;
+    font-weight: 500;
+    border-radius: 5px;
+    color: #3b4c42;
+    background: transparent;
+
+    &.pressed,
+    &:hover {
+      background: #dbdbdb5c;
+      color: #9b9b9b;
+    }
+
+    &.invalid {
+      color: #ffaca6;
+    }
+
+    &.valid {
+      color: #90ac8e;
+    }
+  }
+}
