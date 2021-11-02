@@ -1,7 +1,14 @@
-<body>
+<div *ngIf="activeGame">
   <app-chances [chances]="chances"></app-chances>
   <div class="container">
-    <app-card-strength [word]="word" (chanceTrigger)="chances = chances - 1">
+    <app-card-strength
+      [word]="word"
+      [chances]="chances"
+      (chanceTrigger)="chances = chances - 1"
+      (pointTrigger)="pointTrigger()"
+      (gameOverTrigger)="gameOverTrigger($event)"
+      [refreshInput]="refreshInput"
+    >
     </app-card-strength>
     <div class="info">
       <app-resume
@@ -13,8 +20,8 @@
         [tips]="tips"
         [tipsList]="word?.tips"
         (chancesTrigger)="chances = chances - 1"
-        (tipsTrigger)="teste()"
+        (tipsTrigger)="tips = tips - 1"
       ></app-tips>
     </div>
   </div>
-</body>
+</div>

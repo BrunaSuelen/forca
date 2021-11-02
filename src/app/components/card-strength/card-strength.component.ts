@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Letter } from 'src/app/model/letter.model';
 import { Word } from 'src/app/model/word.model';
 import { ALPHABET } from 'src/assets/data/alphabet';
@@ -8,27 +9,42 @@ import { ALPHABET } from 'src/assets/data/alphabet';
   templateUrl: './card-strength.component.html',
   styleUrls: ['./card-strength.component.scss']
 })
-export class CardStrengthComponent implements OnInit, OnChanges {
+export class CardStrengthComponent implements OnChanges, OnInit {
 
   @Input() word?: Word;
+  @Input() chances?: number;
+  @Input() refreshInput?: Subject<void>;
   @Output() chanceTrigger: EventEmitter<void> = new EventEmitter<void>();
+  @Output() gameOverTrigger: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() pointTrigger: EventEmitter<void> = new EventEmitter<void>();
 
+  wordInput!: string;
   letters!: Array<string>;
-  alphabet: Array<Letter> = ALPHABET;
+  alphabet: Array<Letter> = [...ALPHABET];
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+  ngOnInit(): void {
+    this.refreshInputSubscribe();
+  }
 
+  ngOnChanges(): void {
     if (this.word) {
       this.initAlphabet();
       this.updateWordInput();
     }
   }
 
-  ngOnInit(): void {
-    console.log(this.word);
+  public refreshInputSubscribe(): void {
+    this.refreshInput?.subscribe(() => {
+      this.alphabet = ALPHABET.map((letter: Letter) => {
+        letter.select = letter.valid = false;
+        return letter;
+      });
+
+      this.initAlphabet();
+      this.updateWordInput();
+    })
   }
 
   public initAlphabet(): void {
@@ -39,16 +55,15 @@ export class CardStrengthComponent implements OnInit, OnChanges {
     this.alphabet = this.alphabet
       .map((letter: Letter) => {
         letter.valid = this.letters.includes(letter.char);
-        console.log(this.letters.includes(letter.char), this.letters)
         return letter;
       })
   }
 
-  public updateWordInput(): any {
+  public updateWordInput(): void {
     const LETTERS = this.getLetters(true, true)
       .map((letter: any) => letter.char);
 
-    return this.letters
+    this.wordInput = this.letters
       .map((letter: string) => LETTERS.includes(letter) ? letter : '_')
       .join(' ');
   }
@@ -61,11 +76,20 @@ export class CardStrengthComponent implements OnInit, OnChanges {
 
   public validateLetter(letter: Letter) {
     letter.select = true;
+
     if (letter.valid) {
       this.updateWordInput();
+      const WORD_INPUT = this.wordInput.split(' ').join('');
+      const WORD = this.word?.title.toLocaleUpperCase();
+
+      if (WORD == WORD_INPUT) {
+        this.gameOverTrigger.emit(true);
+        this.pointTrigger.emit();
+      }
       return;
     }
 
+    if (!this.chances) this.gameOverTrigger.emit(false);
     this.chanceTrigger.emit();
   }
 }
