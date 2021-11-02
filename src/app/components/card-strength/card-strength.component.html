@@ -1,34 +1,20 @@
 <mat-card>
   <mat-card-title>{{ word?.category }}</mat-card-title>
   <mat-card-subtitle>Selecione a letra que deseja verificar.</mat-card-subtitle>
-  <app-input [value]="updateWordInput()"></app-input>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <button mat-button class="pressed valid">A</button>
-    <button mat-button class="pressed invalid">B</button>
-    <button mat-button>C</button>
-    <button mat-button>D</button>
-    <button mat-button>E</button>
-    <button mat-button>F</button>
-    <button mat-button>G</button>
-    <button mat-button>H</button>
-    <button mat-button>I</button>
-    <button mat-button>J</button>
-    <button mat-button>K</button>
-    <button mat-button>L</button>
-    <button mat-button>M</button>
-    <button mat-button>N</button>
-    <button mat-button>O</button>
-    <button mat-button>P</button>
-    <button mat-button>Q</button>
-    <button mat-button>R</button>
-    <button mat-button>S</button>
-    <button mat-button>T</button>
-    <button mat-button>U</button>
-    <button mat-button>V</button>
-    <button mat-button>W</button>
-    <button mat-button>X</button>
-    <button mat-button>Y</button>
-    <button mat-button>Z</button>
-  </mat-card-actions>
+  <div *ngIf="word">
+    <app-input [value]="updateWordInput()"></app-input>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button
+        mat-button
+        *ngFor="let letter of alphabet"
+        (click)="validateLetter(letter)"
+        [class.valid]="letter.valid && letter.select"
+        [class.invalid]="!letter.valid && letter.select"
+        [class.pressed]="letter.select"
+      >
+        {{ letter.char }}
+      </button>
+    </mat-card-actions>
+  </div>
 </mat-card>
