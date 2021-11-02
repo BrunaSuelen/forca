@@ -1,7 +1,7 @@
 <mat-card>
-  <mat-card-title>Categoria</mat-card-title>
+  <mat-card-title>{{ word?.category }}</mat-card-title>
   <mat-card-subtitle>Selecione a letra que deseja verificar.</mat-card-subtitle>
-  <app-input></app-input>
+  <app-input [value]="updateWordInput()"></app-input>
   <mat-divider inset></mat-divider>
   <mat-card-actions>
     <button mat-button class="pressed valid">A</button>

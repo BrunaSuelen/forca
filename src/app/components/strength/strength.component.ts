@@ -9,8 +9,8 @@ import { WordService } from 'src/app/service/word-service.service';
 })
 export class StrengthComponent implements OnInit {
   public word?: Word;
-  public words?: Array<Word>;
-  public chances?: number = 5;
+  public words!: Array<Word>;
+  public chances: number = 5;
 
   constructor(
     private wordService: WordService
