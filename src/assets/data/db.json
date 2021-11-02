@@ -1,0 +1,18 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "category": "Comida",
+      "title": "Laranja",
+      "point": 100,
+      "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    },
+    {
+      "id": 1,
+      "category": "Comida",
+      "title": "Laranja",
+      "point": 100,
+      "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    }
+  ]
+}
