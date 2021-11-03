@@ -1,6 +1,6 @@
 <div class="strength" *ngIf="activeGame; else gameOver">
-  <app-chances [chances]="chances"></app-chances>
   <div class="container">
+    <app-chances [chances]="chances"></app-chances>
     <app-card-strength
       *ngIf="word"
       [word]="word"
