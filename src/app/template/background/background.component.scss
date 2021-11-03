@@ -1,8 +1,11 @@
 .background {
+  position: fixed;
   background: #fbf9ee;
   overflow: hidden;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   filter: blur(2px);
+  z-index: -1;
 
   .elements {
     position: relative;
