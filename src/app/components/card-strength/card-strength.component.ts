@@ -26,7 +26,9 @@ export class CardStrengthComponent implements OnChanges, OnInit {
   constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.refreshInputSubscribe();
+    if (this.word) {
+      this.refreshInputSubscribe();
+    }
   }
 
   ngOnChanges(): void {
@@ -51,13 +53,13 @@ export class CardStrengthComponent implements OnChanges, OnInit {
   public initAlphabet(): void {
     if (this.word) {
       this.letters = [...this.word.title.toLocaleUpperCase()];
-    }
 
-    this.alphabet = this.alphabet
-      .map((letter: Letter) => {
-        letter.valid = this.letters.includes(letter.char);
-        return letter;
-      })
+      this.alphabet = this.alphabet
+        .map((letter: Letter) => {
+          letter.valid = this.letters.includes(letter.char);
+          return letter;
+        })
+    }
   }
 
   public updateWordInput(): void {
@@ -86,23 +88,27 @@ export class CardStrengthComponent implements OnChanges, OnInit {
       if (WORD == WORD_INPUT) {
         this.openSnackBar('Muito bem! Está pronto para a próxima palavra?', 'Sim');
         setTimeout(() => {
-          this.gameOverTrigger.emit({ victory: true, activeGame: true });
+          this.gameOverTrigger.emit(true);
           this.pointTrigger.emit();
         }, 800);
       }
       return;
     }
 
-    if (!this.chances) this.gameOverTrigger.emit({ victory: false, activeGame: false });
+    if (this.chances && this.chances <= 1) {
+      setTimeout(() => this.gameOverTrigger.emit(false), 500);
+    }
+
     this.chanceTrigger.emit();
   }
 
   public openSnackBar(message: string, action: string): void {
     this._snackBar.open(message, action);
+    setTimeout(() => this._snackBar.dismiss(), 800);
   }
 
   @HostListener('window:keyup', ['$event'])
-  public teste(event: any) {
+  public listenKeyboard(event: any) {
     if (event.key.match(/[a-z]/i)) {
       const LETTER = this.alphabet
         .find((letter: Letter) => {

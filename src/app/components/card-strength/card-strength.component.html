@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>{{ word?.category }}</mat-card-title>
   <mat-card-subtitle>Selecione a letra que deseja verificar.</mat-card-subtitle>
-  <div *ngIf="word">
+  <div>
     <app-input [value]="wordInput"></app-input>
     <mat-divider inset></mat-divider>
     <mat-card-actions>

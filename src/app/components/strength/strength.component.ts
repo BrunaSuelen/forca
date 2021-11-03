@@ -12,59 +12,58 @@ import { WordService } from 'src/app/service/word-service.service';
 export class StrengthComponent implements OnInit {
   public word?: Word;
   public words!: Array<Word>;
+  public remainingWords!: Array<Word>;
   public uncoveredWordsId: Array<number> = [];
   public victory!: boolean;
   public activeGame: boolean = true;
   public chances: number = 5;
   public tips!: number;
   public point: number = 0;
-  public limit!: number;
 
   public refreshInput: Subject<void> = new Subject();
 
-  constructor(
-    private wordService: WordService
-  ) { }
+  constructor(private wordService: WordService) { }
 
-  ngOnInit(): void {
-    this.getWork();
+  async ngOnInit(): Promise<any> {
+    await this.findAll();
+
+    if (this.words) this.newWheel();
   }
 
   public findAll(): Promise<Array<Word>> {
     return this.wordService
       .findAll()
       .toPromise()
-      .then((words: Array<Word>) => {
-        this.limit = words.length;
-        return this.words = words;
-      });
+      .then((words: Array<Word>) => this.words = words);
   }
 
-  public async getWork(): Promise<any> {
-    if (this.limit === this.uncoveredWordsId.length) {
-      return this.gameOverTrigger({ victory: true, activeGame: false });
-    }
+  public getRemainingWords(): Array<Word> {
+    return this.words
+      .filter((word: Word) => !this.uncoveredWordsId.includes(word.id));
+  }
 
-    let wordId: number;
-    await this.findAll();
+  public getRandomId(): number {
+    let length: number = this.remainingWords?.length;
 
-    if (this.words) {
-      do {
-        wordId = this.wordService.getRandomId(0, this.words.length);
-      } while (this.uncoveredWordsId.includes(wordId));
+    return this.wordService.getRandomId(0, length - 1);
+  }
 
-      this.uncoveredWordsId.push(wordId);
-      this.word = this.words.find((word: Word) => word.id == wordId);
-      this.tips = this.word?.tips.length || 0;
-    }
+  public getWork(): void {
+    let wordId: number = this.getRandomId();
+
+    this.word = this.remainingWords[wordId];
+    this.tips = this.word?.tips.length || 0;
+
+    this.uncoveredWordsId.push(this.word.id);
   }
 
   public gameOverTrigger(event: any): void {
-    this.activeGame = event.activeGame;
-    this.victory = event.victory;
+    this.remainingWords = this.getRemainingWords();
+    this.activeGame = event && (this.remainingWords?.length > 0);
+    this.victory = event;
 
-    if (this.victory && this.limit != this.uncoveredWordsId.length) {
-      this.newWork();
+    if (this.victory && this.remainingWords?.length) {
+      this.newWheel();
     }
   }
 
@@ -72,10 +71,10 @@ export class StrengthComponent implements OnInit {
     this.point += this.word?.point || 0;
   }
 
-  public async newWork(): Promise<any> {
-    await this.getWork();
+  public async newWheel(): Promise<any> {
     this.activeGame = true;
-    this.tips = 3;
+    this.remainingWords = this.getRemainingWords();
+    await this.getWork();
     this.refreshInput.next();
   }
 }

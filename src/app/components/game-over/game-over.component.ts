@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-over',
@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 export class GameOverComponent implements OnInit {
 
   @Input() title!: string;
+  @Input() point!: number;
   @Input() subtitle!: string;
 
   constructor() { }
