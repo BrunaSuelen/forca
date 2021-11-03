@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TipsComponent implements OnInit {
 
   @Input() tips!: number;
+  @Input() tipsMax!: number;
   @Input() chances!: number;
   @Input() tipsList?: Array<string>;
   @Output() tipsTrigger: EventEmitter<void> = new EventEmitter<void>();
@@ -22,6 +23,5 @@ export class TipsComponent implements OnInit {
     this.tips -= 1;
     this.chancesTrigger.emit();
     this.tipsTrigger.emit();
-    console.log(this.tipsList?.slice(0, 3 - this.tips))
   }
 }

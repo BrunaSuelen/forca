@@ -4,7 +4,7 @@
     >Você perderá uma chance caso solicite uma dica.</mat-card-subtitle
   >
   <ul class="tip">
-    <li *ngFor="let tip of tipsList?.slice(0, 3 - this.tips)">
+    <li *ngFor="let tip of tipsList?.slice(0, tipsMax - tips)">
       {{ tip }}
     </li>
   </ul>

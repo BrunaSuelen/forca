@@ -9,6 +9,7 @@ export class ResumeComponent implements OnInit {
 
   @Input() chances!: number;
   @Input() tips!: number;
+  @Input() tipsMax!: number;
   @Input() point!: number;
 
   constructor() { }

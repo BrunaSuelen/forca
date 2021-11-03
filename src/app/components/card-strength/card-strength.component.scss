@@ -1,5 +1,6 @@
 mat-card {
-  width: 40vw;
+  width: calc(100% - 32px);
+  min-width: 300px;
 }
 
 mat-card-actions {
@@ -50,5 +51,6 @@ mat-card-actions {
 @media (max-width: 800px) {
   mat-card {
     width: calc(100% - 32px);
+    min-width: initial;
   }
 }

@@ -18,6 +18,7 @@ export class StrengthComponent implements OnInit {
   public activeGame: boolean = true;
   public chances: number = 5;
   public tips!: number;
+  public tipsMax!: number;
   public point: number = 0;
 
   public refreshInput: Subject<void> = new Subject();
@@ -52,7 +53,7 @@ export class StrengthComponent implements OnInit {
     let wordId: number = this.getRandomId();
 
     this.word = this.remainingWords[wordId];
-    this.tips = this.word?.tips.length || 0;
+    this.tips = this.tipsMax = this.word?.tips.length || 0;
 
     this.uncoveredWordsId.push(this.word.id);
   }
@@ -71,9 +72,17 @@ export class StrengthComponent implements OnInit {
     this.point += this.word?.point || 0;
   }
 
+  public tipsTrigger(): void {
+    this.tips -= 1;
+
+    if (this.chances < 1) {
+      setTimeout(() => this.gameOverTrigger(false), 500);
+    }
+  }
+
   public async newWheel(): Promise<any> {
-    this.activeGame = true;
     this.remainingWords = this.getRemainingWords();
+    this.activeGame = true;
     await this.getWork();
     this.refreshInput.next();
   }

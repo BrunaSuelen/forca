@@ -14,14 +14,16 @@
     <div class="info">
       <app-tips
         [tips]="tips"
+        [tipsMax]="tipsMax"
         [chances]="chances"
         [tipsList]="word?.tips"
         (chancesTrigger)="chances = chances - 1"
-        (tipsTrigger)="tips = tips - 1"
+        (tipsTrigger)="tipsTrigger()"
       ></app-tips>
       <app-resume
         [chances]="chances"
         [tips]="tips"
+        [tipsMax]="tipsMax"
         [point]="point"
       ></app-resume>
     </div>
