@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TipsComponent implements OnInit {
 
   @Input() tips!: number;
+  @Input() chances!: number;
   @Input() tipsList?: Array<string>;
   @Output() tipsTrigger: EventEmitter<void> = new EventEmitter<void>();
   @Output() chancesTrigger: EventEmitter<void> = new EventEmitter<void>();

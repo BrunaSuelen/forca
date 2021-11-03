@@ -10,7 +10,7 @@
   </ul>
   <mat-divider inset></mat-divider>
   <mat-card-actions>
-    <button mat-button [disabled]="!tips" (click)="showMoreTip()">
+    <button mat-button [disabled]="!tips || !chances" (click)="showMoreTip()">
       Preciso de ajuda
     </button>
   </mat-card-actions>

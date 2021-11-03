@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Letter } from 'src/app/model/letter.model';
 import { Word } from 'src/app/model/word.model';
@@ -16,7 +16,7 @@ export class CardStrengthComponent implements OnChanges, OnInit {
   @Input() chances?: number;
   @Input() refreshInput?: Subject<void>;
   @Output() chanceTrigger: EventEmitter<void> = new EventEmitter<void>();
-  @Output() gameOverTrigger: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() gameOverTrigger: EventEmitter<any> = new EventEmitter<any>();
   @Output() pointTrigger: EventEmitter<void> = new EventEmitter<void>();
 
   wordInput!: string;
@@ -86,18 +86,30 @@ export class CardStrengthComponent implements OnChanges, OnInit {
       if (WORD == WORD_INPUT) {
         this.openSnackBar('Muito bem! Está pronto para a próxima palavra?', 'Sim');
         setTimeout(() => {
-          this.gameOverTrigger.emit(true);
+          this.gameOverTrigger.emit({ victory: true, activeGame: true });
           this.pointTrigger.emit();
         }, 800);
       }
       return;
     }
 
-    if (!this.chances) this.gameOverTrigger.emit(false);
+    if (!this.chances) this.gameOverTrigger.emit({ victory: false, activeGame: false });
     this.chanceTrigger.emit();
   }
 
   public openSnackBar(message: string, action: string): void {
     this._snackBar.open(message, action);
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  public teste(event: any) {
+    if (event.key.match(/[a-z]/i)) {
+      const LETTER = this.alphabet
+        .find((letter: Letter) => {
+          return letter.char == event.key.toLocaleUpperCase();
+        })
+
+      if (LETTER) this.validateLetter(LETTER)
+    }
   }
 }

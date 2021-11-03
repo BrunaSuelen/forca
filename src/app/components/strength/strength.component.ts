@@ -16,7 +16,7 @@ export class StrengthComponent implements OnInit {
   public victory!: boolean;
   public activeGame: boolean = true;
   public chances: number = 5;
-  public tips: number = 3;
+  public tips!: number;
   public point: number = 0;
   public limit!: number;
 
@@ -42,7 +42,7 @@ export class StrengthComponent implements OnInit {
 
   public async getWork(): Promise<any> {
     if (this.limit === this.uncoveredWordsId.length) {
-      return this.gameOverTrigger(true);
+      return this.gameOverTrigger({ victory: true, activeGame: false });
     }
 
     let wordId: number;
@@ -50,19 +50,22 @@ export class StrengthComponent implements OnInit {
 
     if (this.words) {
       do {
-        wordId = this.wordService.getRandomId(1, this.words.length);
+        wordId = this.wordService.getRandomId(0, this.words.length);
       } while (this.uncoveredWordsId.includes(wordId));
 
       this.uncoveredWordsId.push(wordId);
       this.word = this.words.find((word: Word) => word.id == wordId);
+      this.tips = this.word?.tips.length || 0;
     }
   }
 
   public gameOverTrigger(event: any): void {
-    this.activeGame = event;
-    this.victory = event;
+    this.activeGame = event.activeGame;
+    this.victory = event.victory;
 
-    if (this.victory) { this.newWork(); }
+    if (this.victory && this.limit != this.uncoveredWordsId.length) {
+      this.newWork();
+    }
   }
 
   public pointTrigger(): void {

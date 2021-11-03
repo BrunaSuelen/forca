@@ -1,51 +1,55 @@
 [
   {
     "id": 1,
-    "category": "Comida",
-    "title": "carro",
+    "category": "Automóvel",
+    "title": "Carroca",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["Burro", "Carga", ""]
   },
   {
     "id": 2,
-    "category": "husdj",
-    "title": "Testando",
+    "category": "Comida",
+    "title": "Pizza",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["Variedade de sabores", "Triângulo", "Geralmente tem muito queijo"]
   },
   {
     "id": 3,
     "category": "Comida",
-    "title": "banana",
+    "title": "Banana",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["O macaco gosta de comer", "Vitamina C", ""]
   },
   {
     "id": 4,
-    "category": "Comida",
+    "category": "Esporte",
     "title": "gol",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["Os torcedores vibram com o..", "Rede", "Futebol"]
   },
   {
     "id": 5,
-    "category": "Comida",
-    "title": "Testando",
+    "category": "Local",
+    "title": "Cozinha",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": [
+      "Toda casa tem",
+      "Muitas reuniõs de família são feitas nele",
+      "Lugar favorito dos gordinhos"
+    ]
   },
   {
     "id": 6,
     "category": "Comida",
-    "title": "Testando",
+    "title": "Cocada",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["Um doce", "Feito de coco", ""]
   },
   {
     "id": 7,
-    "category": "Comida",
-    "title": "Testando",
+    "category": "Pais",
+    "title": "Brasil",
     "point": 100,
-    "tips": ["É uma fruta.", "Tambêm referencia à uma cor", "Citrica"]
+    "tips": ["Cristo Redentor", "Verde, azul e amarelo", ""]
   }
 ]
