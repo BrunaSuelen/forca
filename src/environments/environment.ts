@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'https://forca-app.herokuapp.com/'
+  base_url: 'http://localhost:4200/'
 };
 
 /*
