@@ -4,7 +4,7 @@
     "category": "Automóvel",
     "title": "Carroca",
     "point": 100,
-    "tips": ["Burro", "Carga", ""]
+    "tips": ["Burro", "Carga"]
   },
   {
     "id": 2,
@@ -18,7 +18,7 @@
     "category": "Comida",
     "title": "Banana",
     "point": 100,
-    "tips": ["O macaco gosta de comer", "Vitamina C", ""]
+    "tips": ["O macaco gosta de comer", "Vitamina C"]
   },
   {
     "id": 4,
@@ -43,13 +43,38 @@
     "category": "Comida",
     "title": "Cocada",
     "point": 100,
-    "tips": ["Um doce", "Feito de coco", ""]
+    "tips": ["Um doce", "Feito de coco"]
   },
   {
     "id": 7,
     "category": "Pais",
     "title": "Brasil",
     "point": 100,
-    "tips": ["Cristo Redentor", "Verde, azul e amarelo", ""]
+    "tips": ["Cristo Redentor", "Verde, azul e amarelo"]
+  },
+  {
+    "id": 8,
+    "category": "Animal",
+    "title": "Cachorro",
+    "point": 150,
+    "tips": ["Melhor amigo do homem", "Au au"]
+  },
+  {
+    "id": 9,
+    "category": "Comida",
+    "title": "cuscuz",
+    "point": 150,
+    "tips": [
+      "Comida nordestina",
+      "Milho e tapioca",
+      "Pode ser servido em café da manhã"
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Local",
+    "title": "museu",
+    "point": 100,
+    "tips": ["Preservação da memória cultural de um povo", "Antiguidade"]
   }
 ]
