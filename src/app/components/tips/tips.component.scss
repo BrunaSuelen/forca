@@ -29,16 +29,14 @@ ul {
   }
 }
 
-// @media (max-width: 900px) {
-//   mat-card {
-//     width: calc(100% - 40px);
-//     margin: 20px;
-//   }
+@media (max-width: 800px) {
+  .container {
+    width: calc(50vw - 60px);
+  }
+}
 
-//   mat-card-actions {
-//     display: grid;
-//     grid-template-columns: repeat(6, 1fr);
-//     gap: 5px;
-//     margin: 0 10px;
-//   }
-// }
+@media (max-width: 570px) {
+  .container {
+    width: calc(75vw - 60px);
+  }
+}

@@ -6,3 +6,22 @@
     left: -100px;
   }
 }
+
+@media (max-width: 800px) {
+  .chances img {
+    position: absolute;
+    width: 280px;
+    bottom: 200px;
+    left: -24px;
+    margin-bottom: 34vh;
+  }
+}
+
+@media (max-width: 570px) {
+  .chances img {
+    width: 44vw;
+    max-width: 200px;
+    left: -10px;
+    margin-bottom: 34vh;
+  }
+}
