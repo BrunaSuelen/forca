@@ -12,7 +12,6 @@ export class TipsComponent implements OnInit {
   @Input() chances!: number;
   @Input() tipsList?: Array<string>;
   @Output() tipsTrigger: EventEmitter<void> = new EventEmitter<void>();
-  @Output() chancesTrigger: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
@@ -20,8 +19,6 @@ export class TipsComponent implements OnInit {
   }
 
   showMoreTip(): void {
-    this.tips -= 1;
-    this.chancesTrigger.emit();
     this.tipsTrigger.emit();
   }
 }

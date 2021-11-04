@@ -5,8 +5,9 @@
       *ngIf="word"
       [word]="word"
       [chances]="chances"
-      (chanceTrigger)="chances = chances - 1"
-      (pointTrigger)="pointTrigger()"
+      [roundToTal]="words.length"
+      [wonRounds]="uncoveredWordsId.length"
+      (chanceTrigger)="chancesTrigger()"
       (gameOverTrigger)="gameOverTrigger($event)"
       [refreshInput]="refreshInput"
     >
@@ -17,11 +18,11 @@
         [tipsMax]="tipsMax"
         [chances]="chances"
         [tipsList]="word?.tips"
-        (chancesTrigger)="chances = chances - 1"
         (tipsTrigger)="tipsTrigger()"
       ></app-tips>
       <app-resume
         [chances]="chances"
+        [chancesMax]="chancesMax"
         [tips]="tips"
         [tipsMax]="tipsMax"
         [point]="point"
@@ -39,6 +40,6 @@
         ? 'Parabens!! Você consegui zerar o jogo'
         : 'Infelizmente não foi desta vez :('
     "
-    (newGame)="newWheel()"
+    (newGame)="newRound()"
   ></app-game-over>
 </ng-template>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Letter } from 'src/app/model/letter.model';
 import { Word } from 'src/app/model/word.model';
@@ -14,6 +14,8 @@ export class CardStrengthComponent implements OnChanges, OnInit {
 
   @Input() word?: Word;
   @Input() chances?: number;
+  @Input() wonRounds?: number = 0;
+  @Input() roundToTal?: number = 0;
   @Input() refreshInput?: Subject<void>;
   @Output() chanceTrigger: EventEmitter<void> = new EventEmitter<void>();
   @Output() gameOverTrigger: EventEmitter<any> = new EventEmitter<any>();
@@ -87,10 +89,7 @@ export class CardStrengthComponent implements OnChanges, OnInit {
 
       if (WORD == WORD_INPUT) {
         this.openSnackBar('Muito bem! Está pronto para a próxima palavra?', 'Sim');
-        setTimeout(() => {
-          this.gameOverTrigger.emit(true);
-          this.pointTrigger.emit();
-        }, 800);
+        setTimeout(() => this.gameOverTrigger.emit(true), 800);
       }
       return;
     }

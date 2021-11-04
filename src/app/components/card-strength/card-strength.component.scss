@@ -3,6 +3,27 @@ mat-card {
   min-width: 300px;
 }
 
+mat-card-title {
+  position: relative;
+
+  h5 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #7b7b7b;
+
+    b {
+      font-size: medium;
+    }
+  }
+}
+
+mat-card-subtitle {
+  margin: 2px auto 20px;
+  font-size: small;
+  font-weight: 400;
+}
+
 mat-card-actions {
   display: grid;
   grid-template-columns: repeat(10, 1fr);

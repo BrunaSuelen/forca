@@ -1,80 +1,117 @@
 [
   {
     "id": 1,
-    "category": "Automóvel",
-    "title": "Carroca",
+    "category": "Cor",
+    "title": "Amarelo",
     "point": 100,
-    "tips": ["Burro", "Carga"]
+    "tips": ["___ e azul da verde", "Banana", "Sol"]
   },
   {
     "id": 2,
-    "category": "Comida",
-    "title": "Pizza",
-    "point": 100,
-    "tips": ["Variedade de sabores", "Triângulo", "Geralmente tem muito queijo"]
+    "category": "Objeto",
+    "title": "cama",
+    "point": 200,
+    "tips": ["Confortável", "Um móvel do quarto", "Utilizamos para dormir"]
   },
   {
     "id": 3,
-    "category": "Comida",
-    "title": "Banana",
+    "category": "Objeto",
+    "title": "faca",
     "point": 100,
-    "tips": ["O macaco gosta de comer", "Vitamina C"]
+    "tips": ["Item da cozinha", "Um talher", "Corta coisas"]
   },
   {
     "id": 4,
-    "category": "Esporte",
-    "title": "gol",
-    "point": 100,
-    "tips": ["Os torcedores vibram com o..", "Rede", "Futebol"]
-  },
-  {
-    "id": 5,
-    "category": "Local",
-    "title": "Cozinha",
-    "point": 100,
+    "category": "Comida",
+    "title": "cuscuz",
+    "point": 300,
     "tips": [
-      "Toda casa tem",
-      "Muitas reuniõs de família são feitas nele",
-      "Lugar favorito dos gordinhos"
+      "Comida nordestina",
+      "Pode ser servido em café da manhã",
+      "É feito de floquinhos de milho e tapioca"
     ]
   },
   {
-    "id": 6,
+    "id": 5,
     "category": "Comida",
     "title": "Cocada",
-    "point": 100,
-    "tips": ["Um doce", "Feito de coco"]
+    "point": 200,
+    "tips": ["Um doce baiano", "Feito de coco"]
+  },
+  {
+    "id": 6,
+    "category": "COVID-19",
+    "title": "Quarentena",
+    "especial": true,
+    "point": 500,
+    "tips": []
   },
   {
     "id": 7,
+    "category": "COVID-19",
+    "title": "Alcool",
+    "point": 500,
+    "tips": []
+  },
+  {
+    "id": 8,
     "category": "Pais",
     "title": "Brasil",
     "point": 100,
     "tips": ["Cristo Redentor", "Verde, azul e amarelo"]
   },
   {
-    "id": 8,
-    "category": "Animal",
-    "title": "Cachorro",
-    "point": 150,
-    "tips": ["Melhor amigo do homem", "Au au"]
-  },
-  {
     "id": 9,
-    "category": "Comida",
-    "title": "cuscuz",
-    "point": 150,
-    "tips": [
-      "Comida nordestina",
-      "Milho e tapioca",
-      "Pode ser servido em café da manhã"
-    ]
+    "category": "Esporte",
+    "title": "Basquete",
+    "point": 200,
+    "tips": ["Pessoas muito altas", "Bola grande e laranja", "NBA"]
   },
   {
     "id": 10,
-    "category": "Local",
-    "title": "museu",
+    "category": "Fruta",
+    "title": "Banana",
     "point": 100,
-    "tips": ["Preservação da memória cultural de um povo", "Antiguidade"]
+    "tips": ["Formato de lua", "Amarela", "A favorita do macaco"]
+  },
+  {
+    "id": 11,
+    "category": "Animal",
+    "title": "Cachorro",
+    "point": 100,
+    "tips": ["Animal domestico", "Melhor amigo do homem", "Au au"]
+  },
+  {
+    "id": 12,
+    "category": "Animal",
+    "title": "Cavalo",
+    "point": 200,
+    "tips": [
+      "Alguns são usados como transporte",
+      "Animal que galopa",
+      "Támbem participa de esportes"
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Comida",
+    "title": "Pizza",
+    "point": 200,
+    "tips": [
+      "Comida italiana",
+      "Variedade de sabores",
+      "Geralmente tem muito queijo"
+    ]
+  },
+  {
+    "id": 14,
+    "category": "Comida",
+    "title": "Biscoito",
+    "point": 200,
+    "tips": [
+      "Um lanche que pode ser doce ou salgado",
+      "Pode ser recheado",
+      "Sempre crocante"
+    ]
   }
 ]

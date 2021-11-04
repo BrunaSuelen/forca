@@ -14,21 +14,23 @@ export class StrengthComponent implements OnInit {
   public words!: Array<Word>;
   public remainingWords!: Array<Word>;
   public uncoveredWordsId: Array<number> = [];
+  public chanceMarker: number = 500;
   public victory!: boolean;
   public activeGame: boolean = true;
-  public chances: number = 5;
+  public chancesMax: number = 5;
+  public chances!: number;
   public tips!: number;
   public tipsMax!: number;
   public point: number = 0;
-
   public refreshInput: Subject<void> = new Subject();
 
   constructor(private wordService: WordService) { }
 
   async ngOnInit(): Promise<any> {
+    this.chances = this.chancesMax;
     await this.findAll();
 
-    if (this.words) this.newWheel();
+    if (this.words) this.newRound();
   }
 
   public findAll(): Promise<Array<Word>> {
@@ -36,6 +38,12 @@ export class StrengthComponent implements OnInit {
       .findAll()
       .toPromise()
       .then((words: Array<Word>) => this.words = words);
+  }
+
+  public async newRound(): Promise<any> {
+    this.remainingWords = this.getRemainingWords();
+    await this.getWork();
+    this.refreshInput.next();
   }
 
   public getRemainingWords(): Array<Word> {
@@ -59,31 +67,34 @@ export class StrengthComponent implements OnInit {
   }
 
   public gameOverTrigger(event: any): void {
+    this.pointTrigger();
     this.remainingWords = this.getRemainingWords();
     this.activeGame = event && (this.remainingWords?.length > 0);
     this.victory = event;
 
     if (this.victory && this.remainingWords?.length) {
-      this.newWheel();
+      this.newRound();
     }
   }
 
   public pointTrigger(): void {
-    this.point += this.word?.point || 0;
+    if (this.word) this.point += this.word?.point;
+    if (this.chanceMarker <= this.point) {
+      this.chanceMarker += 500;
+      this.chances += 1;
+    }
+  }
+
+  public chancesTrigger(): void {
+    if (this.word) this.chances -= 1;
   }
 
   public tipsTrigger(): void {
+    if (this.tips !== this.tipsMax) this.chancesTrigger();
     this.tips -= 1;
 
     if (this.chances < 1) {
       setTimeout(() => this.gameOverTrigger(false), 500);
     }
-  }
-
-  public async newWheel(): Promise<any> {
-    this.remainingWords = this.getRemainingWords();
-    this.activeGame = true;
-    await this.getWork();
-    this.refreshInput.next();
   }
 }

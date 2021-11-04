@@ -33,7 +33,6 @@
       display: grid;
       justify-content: center;
       grid-template-columns: minmax(280px, calc(100vw - 70px));
-      padding-top: 10vh;
 
       .info {
         justify-self: self-end;

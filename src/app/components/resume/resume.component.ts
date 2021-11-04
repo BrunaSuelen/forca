@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ResumeComponent implements OnInit {
 
   @Input() chances!: number;
+  @Input() chancesMax!: number;
   @Input() tips!: number;
   @Input() tipsMax!: number;
   @Input() point!: number;

@@ -7,8 +7,8 @@
     <div>
       <h5>Chances</h5>
       <h3>
-        <b>{{ chances }}</b
-        >/5
+        <b [class.alert]="chances == 1">{{ chances }}</b
+        >/{{ chancesMax }}
       </h3>
     </div>
     <div class="last-item">

@@ -1,6 +1,12 @@
 <mat-card>
-  <mat-card-title>{{ word?.category }}</mat-card-title>
-  <mat-card-subtitle>Selecione a letra que deseja verificar.</mat-card-subtitle>
+  <mat-card-title>
+    {{ word?.category }}
+    <h5>
+      <b>{{ wonRounds }}</b
+      >/{{ roundToTal }}
+    </h5>
+  </mat-card-title>
+  <mat-card-subtitle>PONTOS: {{ word?.point }}</mat-card-subtitle>
   <div>
     <app-input [value]="wordInput"></app-input>
     <mat-divider inset></mat-divider>

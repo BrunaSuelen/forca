@@ -15,7 +15,7 @@ export class ChancesComponent implements OnInit {
 
   public getImage(): string {
     const URL = 'assets/images/chances/';
-    const IMAGE = this.chances == undefined || this.chances < 0 ? 'default' : this.chances;
+    const IMAGE = this.chances == undefined || this.chances < 0 || this.chances > 5 ? 'default' : this.chances;
     return `${URL}${IMAGE}.png`;
   }
 }

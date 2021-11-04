@@ -8,6 +8,12 @@
   margin: 8px;
   width: calc(100% - 16px);
 
+  span {
+    vertical-align: baseline;
+    font-size: x-small;
+    padding-left: 2px;
+  }
+
   &.mat-button-disabled.mat-button-disabled {
     background: #bdbdbd;
   }

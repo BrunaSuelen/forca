@@ -107,6 +107,11 @@ export const ALPHABET: Array<Letter> = [
     select: false
   },
   {
+    char: 'V',
+    valid: false,
+    select: false
+  },
+  {
     char: 'W',
     valid: false,
     select: false

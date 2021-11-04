@@ -1,8 +1,8 @@
 <mat-card class="container">
-  <mat-card-title>Dicas</mat-card-title>
-  <mat-card-subtitle
-    >Você perderá uma chance caso solicite uma dica.</mat-card-subtitle
-  >
+  <mat-card-title> Dicas </mat-card-title>
+  <mat-card-subtitle>
+    Você perderá uma chance caso solicite mais de uma dica.
+  </mat-card-subtitle>
   <ul class="tip">
     <li *ngFor="let tip of tipsList?.slice(0, tipsMax - tips)">
       {{ tip }}
@@ -12,6 +12,7 @@
   <mat-card-actions>
     <button mat-button [disabled]="!tips || !chances" (click)="showMoreTip()">
       Preciso de ajuda
+      <span *ngIf="tipsMax != tips">(-1 chance)</span>
     </button>
   </mat-card-actions>
 </mat-card>
