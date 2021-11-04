@@ -9,6 +9,7 @@ export class GameOverComponent implements OnInit {
 
   @Input() title!: string;
   @Input() point!: number;
+  @Input() victory!: boolean;
   @Input() subtitle!: string;
 
   constructor() { }

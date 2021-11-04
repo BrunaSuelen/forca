@@ -2,9 +2,16 @@
   <mat-card>
     <mat-card-title>{{ title }}</mat-card-title>
     <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
-    <div *ngIf="point" class="point">
-      <p>Muito bem, você atingiu:</p>
+    <div *ngIf="point" class="point {{ victory ? 'victory' : 'loss' }}">
       <h1>{{ point }}</h1>
+      <h5 *ngIf="victory">PARABÊNS</h5>
+      <p>
+        {{
+          victory
+            ? "Parabêns!! Você atingiu a nota máxima"
+            : "Você foi bem! Continue tentando."
+        }}
+      </p>
     </div>
     <mat-divider inset></mat-divider>
     <mat-card-actions>

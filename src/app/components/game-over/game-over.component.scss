@@ -35,12 +35,19 @@
 .point {
   margin: auto;
   text-align: center;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+
+  &.victory h1 {
+    color: #64c75d;
+  }
+
+  &.loss h1 {
+    color: #fd2020;
+  }
 
   h1 {
     font-size: xxx-large;
-    font-family: "Zen Kaku Gothic Antique", sans-serif;
     margin-top: 60px;
-    color: #64c75d;
     font-weight: 600;
   }
 }
