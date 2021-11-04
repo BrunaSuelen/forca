@@ -4,6 +4,7 @@ export class Word {
     public category: string,
     public title: string,
     public point: number,
-    public tips: Array<string>
+    public tips: Array<string>,
+    public especial?: boolean
   ) { }
 }

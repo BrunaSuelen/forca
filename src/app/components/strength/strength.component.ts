@@ -14,7 +14,7 @@ export class StrengthComponent implements OnInit {
   public words!: Array<Word>;
   public remainingWords!: Array<Word>;
   public uncoveredWordsId: Array<number> = [];
-  public chanceMarker: number = 500;
+  public chanceMarker: number = 1000;
   public victory!: boolean;
   public activeGame: boolean = true;
   public chancesMax: number = 5;
@@ -44,6 +44,7 @@ export class StrengthComponent implements OnInit {
     this.remainingWords = this.getRemainingWords();
     await this.getWork();
     this.refreshInput.next();
+    this.wordService.darkMode.next(this.word?.especial || false);
   }
 
   public getRemainingWords(): Array<Word> {
@@ -80,7 +81,7 @@ export class StrengthComponent implements OnInit {
   public pointTrigger(): void {
     if (this.word) this.point += this.word?.point;
     if (this.chanceMarker <= this.point) {
-      this.chanceMarker += 500;
+      this.chanceMarker += 1000;
       this.chances += 1;
     }
   }

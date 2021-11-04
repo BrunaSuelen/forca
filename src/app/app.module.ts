@@ -19,6 +19,7 @@ import { InputComponent } from './components/input/input.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { ResumeComponent } from './components/resume/resume.component';
 import { GameOverComponent } from './components/game-over/game-over.component';
+import { WordService } from './service/word-service.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { GameOverComponent } from './components/game-over/game-over.component';
     MatButtonModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [WordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

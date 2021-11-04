@@ -7,6 +7,10 @@
   filter: blur(2px);
   z-index: -1;
 
+  &.dark-mode {
+    background-color: black;
+  }
+
   .elements {
     position: relative;
     width: 100%;
@@ -58,4 +62,11 @@
       }
     }
   }
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
